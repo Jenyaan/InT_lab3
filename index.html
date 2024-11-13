@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>lab_3</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    body{
+    background-image: url(img/Фон.jpg);
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    font-size: 16px;
+    font-family: 'Noto Sans', sans-serif;
+  }
+</style>
+
+<body>
+    <header id="zagolovok" >
+        <h2>Лабораторна робота №3</h2> 
+        <p>Варіант №0</p>
+    </header>
+    <div style="display: flex;">
+        <div class="navigator">
+            <ul class="navigator_menu">
+                <li><a href="#" class="changeImage" data-image="product1.jpeg">image_1</a></li>
+                <li><a href="#" class="changeImage" data-image="product2.jpeg">image_2</a></li>
+                <li><a href="#" class="changeImage" data-image="product3.jpeg">image_3</a></li>
+                <li><a href="#" class="changeImage" data-image="product4.jpeg">image_4</a></li>
+            </ul>
+        </div>
+        <div>      
+            <section class="content" id="info">
+                <div class="content_img">
+                    <div class="img_scrool">
+                        <div class="img_border">
+                            <img id="Img" src="img/product1.jpeg" alt="">
+                        </div>
+                    </div>    
+                    <div>
+                        <form id="imageSettingsForm" style="padding-top: 2%;">
+                            <label for="width">Ширина (px):</label>
+                            <input type="number" id="width" placeholder="Введіть ширину" min="0"><br><br>
+                
+                            <label for="height">Висота (px):</label>
+                            <input type="number" id="height" placeholder="Введіть висоту" min="0"><br><br>
+                
+                            <label for="border">Товщина рамки (px):</label>
+                            <input type="number" id="border" placeholder="Введіть товщину рамки" min="0"><br><br>
+                
+                            <label for="altText">Альтернативний текст:</label>
+                            <input type="text" id="altText" placeholder="Введіть альтернативний текст"><br><br>
+                
+                            <button type="button" id="applySettings">Застосувати</button>
+                        </form>
+                    </div> 
+                </div>
+                <div class="content_info">
+                    <p class="content_info_punct">Головоломки — це потужний інструмент для розвитку багатьох когнітивних навичок. Ось кілька основних корисностей:</p>
+                    <li class="content_info_punct">Розвиток логічного мислення. Головоломки вимагають аналізу та роздумів, що сприяє розвитку здатності знаходити зв’язки між елементами завдання та вирішувати проблеми ефективніше.</li>
+                    <li class="content_info_punct">Покращення пам'яті. Рішення головоломок допомагає тренувати як короткострокову, так і довгострокову пам'ять, що підвищує здатність запам'ятовувати деталі та інформацію.</li>
+                    <li class="content_info_punct">Збільшення концентрації. Заглиблення в складні завдання вчить зберігати увагу протягом тривалого часу, що важливо у повсякденному житті та роботі.</li>
+                    <li class="content_info_punct">Розвиток творчого мислення. Деякі головоломки вимагають нестандартного підходу, що сприяє гнучкості розуму та розвитку креативності.</li>
+                    <li class="content_info_punct">Зміцнення зв'язків між нейронами. Рішення головоломок стимулює мозок, створюючи нові нейронні зв'язки, що покращує загальні когнітивні функції та захищає від вікових когнітивних розладів.</li>
+                    <li class="content_info_punct">Формування терпіння та наполегливості. Часто для вирішення головоломок потрібно багато часу та терпіння, що допомагає розвивати стійкість і наполегливість у досягненні цілей.</li>
+                    <li class="content_info_punct">Зниження стресу. Для багатьох людей вирішення головоломок приносить задоволення і допомагає відволіктися від повсякденних турбот, що сприяє зменшенню стресу.</li>
+                    <li class="content_info_punct">Покращення просторового мислення. Просторові головоломки, такі як кубики Рубіка чи пазли, розвивають навички орієнтації у просторі, що корисно для візуального сприйняття і навігації.</li>    
+                </div>
+            </section>
+        </div>
+    </div>   
+
+    <footer id="over"><h3>Міщенко Євген Євгенович КІУКІу-23-1</h3></footer>
+
+    <script>
+        $(document).ready(function() {
+            $('.changeImage').click(function(event) {
+                event.preventDefault(); 
+                const newImage = 'img/' + $(this).data('image'); 
+                $('#Img').attr('src', newImage); я
+            });
+    
+            $('#applySettings').click(function() {
+                const width = $('#width').val();
+                const height = $('#height').val();
+                const border = $('#border').val();
+                const altText = $('#altText').val();
+    
+                if (width) {
+                    $('#Img').css('width', width + 'px');
+                }
+                if (height) {
+                    $('#Img').css('height', height + 'px');
+                }
+                if (border) {
+                    $('#Img').css({
+                        'border-width': border + 'px',
+                        'border-style': 'solid',
+                        'border-color': 'black'
+                    });
+                }
+                if (altText) {
+                    $('#Img').attr('alt', altText);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
